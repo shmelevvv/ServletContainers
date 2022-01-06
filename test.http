@@ -1,0 +1,7 @@
+POST http://localhost:8080/ServletContainers-1.0-SNAPSHOT/api/posts
+Content-Type: application/json
+
+{
+  "id": 0,
+  "content": "content 2"
+}

@@ -1,8 +1,10 @@
 package org.example.servlet;
 
+import org.example.config.JavaConfig;
 import org.example.controller.PostController;
 import org.example.repository.PostRepository;
 import org.example.service.PostService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,13 +16,12 @@ public class MainServlet extends HttpServlet {
     private static final String DELETE = "DELETE";
     private static final String CONTEXT_PATH = "/ServletContainers-1.0-SNAPSHOT";
 
+    final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
     private PostController controller;
 
     @Override
     public void init() {
-        final var repository = new PostRepository();
-        final var service = new PostService(repository);
-        controller = new PostController(service);
+        controller = context.getBean(PostController.class);
     }
 
     @Override
