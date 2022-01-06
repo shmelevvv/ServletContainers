@@ -1,11 +1,13 @@
 package org.example.repository;
 
 import org.example.model.Post;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
 import java.util.*;
 import java.util.Optional;
 
+@Repository
 public class PostRepository {
     private static final Map<Long, Post> POSTS = new HashMap<>();
     private static Long COUNTER = Long.valueOf(0L);
